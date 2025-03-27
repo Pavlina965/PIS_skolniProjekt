@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engel & Volkers - Přihlášení</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
+    <link>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Login Container -->
+
+<section class="login-page">
+<div id="loginPage" class="login-container">
+    <div class="logo">Engel & Volkers</div>
+
+    <div class="error-message" id="errorMessage">
+        Nesprávné přihlašovací údaje. Zkuste to prosím znovu.
+    </div>
+
+    <form class="login-form" id="loginForm">
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+                    type="email"
+                    id="email"
+                    class="form-input"
+                    placeholder="Zadejte váš email"
+                    required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Heslo</label>
+            <input
+                    type="password"
+                    id="password"
+                    class="form-input"
+                    placeholder="Zadejte heslo"
+                    required
+            >
+        </div>
+
+        <button type="submit" class="btn">Přihlásit se</button>
+
+        <div class="forgot-password">
+            <a href="#">Zapomenuté heslo?</a>
+        </div>
+    </form>
+
+    <div class="signup-link">
+        Nemáte účet? <a href="#">Zaregistrovat se</a>
+    </div>
+</div>
+</section>
+
+<!-Dashboard Container -->
+<div id="dashboard">
+    <div class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="#">Nemovitosti</a>
+        <a href="#">Klienti</a>
+        <a href="#">Propojení</a>
+        <a href="PISFaktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">Engel & Volkers</div>
+            <button id="logoutBtn" class="logout-btn">Odhlásit se</button>
+        </header>
+
+        <div class="summary-section">
+            <div class="summary-card">
+                <div class="summary-title">Celkový počet nemovitostí</div>
+                <div class="summary-value">42</div>
+                <div class="summary-change positive-change">↑ 5 od minulého měsíce</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Aktivní zakázky</div>
+                <div class="summary-value">18</div>
+                <div class="summary-change positive-change">↑ 3 od minulého měsíce</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Noví klienti</div>
+                <div class="summary-value">7</div>
+                <div class="summary-change positive-change">↑ 2 od minulého měsíce</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Uzavřené obchody</div>
+                <div class="summary-value">12</div>
+                <div class="summary-change positive-change">↑ 2 od minulého měsíce</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Provize tento měsíc</div>
+                <div class="summary-value">150 000 Kč</div>
+                <div class="summary-change positive-change">↑ 15% růst</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Průměrná doba prodeje</div>
+                <div class="summary-value">18 dní</div>
+                <div class="summary-change negative-change">↓ 3 dny zlepšení</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-title">Zobchodované nemovitosti</div>
+                <div class="summary-value">35</div>
+                <div class="summary-change positive-change">↑ 5 od ledna</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Nadcházející schůzky</h2>
+            </div>
+            <div class="card-body">
+                <div id="meeting-list" class="recent-activity"></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Úkoly</h2>
+            </div>
+            <div class="card-body">
+                <form id="taskForm" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="taskInput" class="form-input" placeholder="Nový úkol..." required>
+                    <button type="submit" class="btn" style="flex-shrink: 0;">Přidat</button>
+                </form>
+                <ul id="taskList" style="list-style: none; padding-left: 0;"></ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Kalendář</h2>
+            </div>
+            <div class="card-body">
+                <div id="calendar-title" style="text-align: center; font-weight: bold; margin-bottom: 10px;"></div>
+                <div id="calendar" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px;"></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Nejnovější aktivity</h2>
+            </div>
+            <div class="card-body">
+                <div class="recent-activity">
+                    <div class="activity-item">
+                        <div class="activity-details">
+                            <div class="activity-title">Nová nemovitost</div>
+                            <div class="activity-description">Přidána nemovitost na ulici Václavské náměstí</div>
+                        </div>
+                        <div class="activity-time">Před 2 hodinami</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-details">
+                            <div class="activity-title">Uzavřená zakázka</div>
+                            <div class="activity-description">Prodej bytu 3+kk v Praze 5</div>
+                        </div>
+                        <div class="activity-time">Včera</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-details">
+                            <div class="activity-title">Nový klient</div>
+                            <div class="activity-description">Přihlášení klienta Jana Nováková</div>
+                        </div>
+                        <div class="activity-time">Před 3 dny</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Rychlé akce</h2>
+            </div>
+            <div class="card-body">
+                <div class="quick-actions">
+                    <div class="quick-action">
+                        <div class="quick-action-icon">🏠</div>
+                        <div class="quick-action-title">Přidat nemovitost</div>
+                    </div>
+                    <div class="quick-action">
+                        <div class="quick-action-icon">👥</div>
+                        <div class="quick-action-title">Nový klient</div>
+                    </div>
+                    <div class="quick-action">
+                        <div class="quick-action-icon">📊</div>
+                        <div class="quick-action-title">Vytvořit report</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('errorMessage');
+        const loginPage = document.getElementById('loginPage');
+        const dashboard = document.getElementById('dashboard');
+        // Basic validation (you'd replace this with actual authentication)
+        if (email === 'admin@engelvolkers.cz' && password === 'admin') {
+            localStorage.setItem('isLoggedIn', 'true'); // Uložení přihlášení
+            loginPage.style.display = 'none';
+            dashboard.style.display = 'block';
+        } else {
+            // Show error message
+            errorMessage.style.display = 'block';
+        }
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        const loginPage = document.getElementById('loginPage');
+        const dashboard = document.getElementById('dashboard');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Hide dashboard, show login
+        dashboard.style.display = 'none';
+        loginPage.style.display = 'block';
+
+        // Reset form
+        document.getElementById('loginForm').reset();
+        errorMessage.style.display = 'none';
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginPage = document.getElementById('loginPage');
+        const dashboard = document.getElementById('dashboard');
+        const errorMessage = document.getElementById('errorMessage');
+
+// Zobrazit dashboard, pokud už je uživatel přihlášený
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            loginPage.style.display = 'none';
+            dashboard.style.display = 'block';
+        }
+        // Schůzky – můžeš nahradit dynamickými daty později
+        const meetings = [
+            { title: 'Schůzka s klientem A', date: '2025-03-28', time: '12:00', description: 'Prohlídka bytu Praha 3' },
+            { title: 'Schůzka s klientem B', date: '2025-03-29', time: '10:00', description: 'Konzultace o prodeji' },
+            { title: 'Schůzka s klientem C', date: '2025-03-30', time: '15:30', description: 'Předání nemovitosti' }
+        ];
+
+        // Seznam schůzek
+        const list = document.getElementById('meeting-list');
+        meetings.forEach(m => {
+            const div = document.createElement('div');
+            div.className = 'activity-item';
+            div.innerHTML = `
+            <div class="activity-details">
+                <div class="activity-title">${m.title}</div>
+                <div class="activity-description">${m.description}</div>
+            </div>
+            <div class="activity-time">${m.date} ${m.time}</div>
+        `;
+            list.appendChild(div);
+        });
+
+        // Kalendář – aktuální měsíc
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
+
+        const calendar = document.getElementById('calendar');
+        const calendarTitle = document.getElementById('calendar-title');
+        const monthNames = ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'];
+        calendarTitle.textContent = `${monthNames[month]} ${year}`;
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0 = neděle
+
+        const dayNames = ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'];
+        dayNames.forEach(day => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'calendar-day';
+            dayEl.innerText = day;
+            calendar.appendChild(dayEl);
+        });
+
+        // Vyplnit prázdná místa před 1. dnem v měsíci
+        for (let i = 0; i < (firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1); i++) {
+            const empty = document.createElement('div');
+            calendar.appendChild(empty);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateStr = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            const dayEl = document.createElement('div');
+            dayEl.className = 'calendar-day';
+
+            // Zvýraznění dnešního dne
+            if (today.getDate() === day) {
+                dayEl.classList.add('today');
+            }
+
+            // Značení schůzek
+            const meetingToday = meetings.find(m => m.date === dateStr);
+            if (meetingToday) {
+                dayEl.innerHTML = `<strong>${day}</strong><br><small>📌</small>`;
+            } else {
+                dayEl.innerText = day;
+            }
+
+            calendar.appendChild(dayEl);
+        }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const taskForm = document.getElementById('taskForm');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        const tasks = [
+            'Zavolat klientovi Tomáš Hrubý',
+            'Připravit smlouvu k bytu U Smaltovny',
+            'Přidat fotografie nemovitosti v Karlíně'
+        ];
+
+        tasks.forEach(task => addTask(task));
+
+        taskForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                addTask(taskText);
+                taskInput.value = '';
+            }
+        });
+
+        function addTask(text) {
+            const li = document.createElement('li');
+            li.className = 'task-item';
+
+            const label = document.createElement('label');
+            label.className = 'task-text';
+            label.style.flexGrow = '1';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'task-checkbox';
+
+            checkbox.addEventListener('change', () => {
+                li.classList.toggle('completed', checkbox.checked);
+            });
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'task-delete';
+            deleteBtn.innerHTML = '✖';
+            deleteBtn.addEventListener('click', () => {
+                li.remove();
+            });
+
+            label.appendChild(document.createTextNode(text));
+
+            const actions = document.createElement('div');
+            actions.className = 'task-actions';
+            actions.appendChild(checkbox);
+            actions.appendChild(deleteBtn);
+
+            li.appendChild(label);
+            li.appendChild(actions);
+
+            taskList.appendChild(li);
+        }
+    });
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('isLoggedIn'); // Odhlášení
+        dashboard.style.display = 'none';
+        loginPage.style.display = 'block';
+        document.getElementById('loginForm').reset();
+        errorMessage.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

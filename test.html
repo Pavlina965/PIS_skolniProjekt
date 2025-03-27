@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Makléře</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .zakazky {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .zakazka {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .zakazka h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #0077cc;
+        }
+
+        .zakazka p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .schuzky {
+            margin-top: 20px;
+        }
+
+        .schuzky ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .schuzky li {
+            background: #e9f5ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Zakázky makléře</h2>
+    <div class="zakazky" id="zakazky">
+        <!-- Sem se načtou zakázky -->
+    </div>
+
+    <h2 class="schuzky-title">Nadcházející schůzky</h2>
+    <div class="schuzky">
+        <ul id="schuzky">
+            <!-- Sem se načtou schůzky -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const zakazkyData = [
+            { id: 1, nazev: "Byt 2+1 v centru", klient: "Jan Novák", cena: "3 200 000 Kč" },
+            { id: 2, nazev: "Rodinný dům se zahradou", klient: "Eva Dvořáková", cena: "5 500 000 Kč" },
+            { id: 3, nazev: "Komerční prostor na pronájem", klient: "Petr Malý", cena: "25 000 Kč/měsíc" }
+        ];
+
+        const schuzkyData = [
+            { datum: "28.3.2025", cas: "10:00", klient: "Jan Novák" },
+            { datum: "29.3.2025", cas: "14:30", klient: "Eva Dvořáková" }
+        ];
+
+        const zakazkyContainer = document.getElementById("zakazky");
+        zakazkyData.forEach(z => {
+            const div = document.createElement("div");
+            div.classList.add("zakazka");
+            div.innerHTML = `
+                    <h3>${z.nazev}</h3>
+                    <p><strong>Klient:</strong> ${z.klient}</p>
+                    <p><strong>Cena:</strong> ${z.cena}</p>
+                `;
+            zakazkyContainer.appendChild(div);
+        });
+
+        const schuzkyContainer = document.getElementById("schuzky");
+        schuzkyData.forEach(s => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${s.datum} ${s.cas}</strong> – Schůzka s ${s.klientem}`;
+            schuzkyContainer.appendChild(li);
+        });
+    });
+</script>
+
+</body>
+</html>
