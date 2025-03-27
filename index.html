@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="#">Klienti</a>
+        <a href="#">Propojení</a>
+        <a href="PISFaktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
 <!-- Login Container -->
 
 <section class="login-page">
@@ -57,21 +68,73 @@
 
 <!-Dashboard Container -->
 <div id="dashboard">
-    <div class="navbar">
-        <a href="index.html">Dashboard</a>
-        <a href="#">Nemovitosti</a>
-        <a href="#">Klienti</a>
-        <a href="#">Propojení</a>
-        <a href="PISFaktury.html">Fakturace</a>
-        <a href="#">Výkazy</a>
-        <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
-    </div>
 
     <div class="container">
         <header>
             <div class="logo">Engel & Volkers</div>
             <button id="logoutBtn" class="logout-btn">Odhlásit se</button>
         </header>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Úkoly</h2>
+            </div>
+            <div class="card-body">
+                <form id="taskForm" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="taskInput" class="form-input" placeholder="Nový úkol..." required>
+                    <button type="submit" class="btn" style="flex-shrink: 0;">Přidat</button>
+                </form>
+                <ul id="taskList" style="list-style: none; padding-left: 0;"></ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Kalendář</h2>
+            </div>
+            <div class="card-body">
+                <div id="calendar-title" style="text-align: center; font-weight: bold; margin-bottom: 10px;"></div>
+                <div id="calendar" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px;"></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Nadcházející schůzky</h2>
+            </div>
+            <div class="card-body">
+                <div id="meeting-list" class="recent-activity"></div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Nejnovější aktivity</h2>
+            </div>
+            <div class="card-body">
+                <div class="recent-activity">
+                    <div class="activity-item">
+                        <div class="activity-details">
+                            <div class="activity-title">Nová nemovitost</div>
+                            <div class="activity-description">Přidána nemovitost na ulici Václavské náměstí</div>
+                        </div>
+                        <div class="activity-time">Před 2 hodinami</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-details">
+                            <div class="activity-title">Uzavřená zakázka</div>
+                            <div class="activity-description">Prodej bytu 3+kk v Praze 5</div>
+                        </div>
+                        <div class="activity-time">Včera</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-details">
+                            <div class="activity-title">Nový klient</div>
+                            <div class="activity-description">Přihlášení klienta Jana Nováková</div>
+                        </div>
+                        <div class="activity-time">Před 3 dny</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="summary-section">
             <div class="summary-card">
@@ -110,66 +173,6 @@
                 <div class="summary-change positive-change">↑ 5 od ledna</div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Nadcházející schůzky</h2>
-            </div>
-            <div class="card-body">
-                <div id="meeting-list" class="recent-activity"></div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Úkoly</h2>
-            </div>
-            <div class="card-body">
-                <form id="taskForm" style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <input type="text" id="taskInput" class="form-input" placeholder="Nový úkol..." required>
-                    <button type="submit" class="btn" style="flex-shrink: 0;">Přidat</button>
-                </form>
-                <ul id="taskList" style="list-style: none; padding-left: 0;"></ul>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Kalendář</h2>
-            </div>
-            <div class="card-body">
-                <div id="calendar-title" style="text-align: center; font-weight: bold; margin-bottom: 10px;"></div>
-                <div id="calendar" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px;"></div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Nejnovější aktivity</h2>
-            </div>
-            <div class="card-body">
-                <div class="recent-activity">
-                    <div class="activity-item">
-                        <div class="activity-details">
-                            <div class="activity-title">Nová nemovitost</div>
-                            <div class="activity-description">Přidána nemovitost na ulici Václavské náměstí</div>
-                        </div>
-                        <div class="activity-time">Před 2 hodinami</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-details">
-                            <div class="activity-title">Uzavřená zakázka</div>
-                            <div class="activity-description">Prodej bytu 3+kk v Praze 5</div>
-                        </div>
-                        <div class="activity-time">Včera</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-details">
-                            <div class="activity-title">Nový klient</div>
-                            <div class="activity-description">Přihlášení klienta Jana Nováková</div>
-                        </div>
-                        <div class="activity-time">Před 3 dny</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="card">
             <div class="card-header">
                 <h2 class="card-title">Rychlé akce</h2>

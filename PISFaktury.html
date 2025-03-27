@@ -7,74 +7,75 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="navbar">
-    <a href="index.html">Dashboard</a>
-    <a href="#">Nemovitosti</a>
-    <a href="#">Klienti</a>
-    <a href="#">Propojení</a>
-    <a href="PISFaktury.html">Fakturace</a>
-    <a href="#">Výkazy</a>
-    <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
-</div>
-
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="#">Klienti</a>
+        <a href="#">Propojení</a>
+        <a href="PISFaktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
 <div class="container">
     <header>
         <div class="logo">Engel & Volkers</div>
         <div class="action-buttons">
-            <button class="btn btn-outline">Export Data</button>
-            <button class="btn btn-primary">Create Invoice</button>
+            <button class="btn btn-outline">Exportovat</button>
+            <button class="btn btn-primary">Vytvořit fakturu</button>
         </div>
     </header>
 
-    <h1 class="page-title">Invoice Management</h1>
+    <h1 class="page-title">Správa faktur</h1>
 
     <div class="summary-section">
         <div class="summary-card">
-            <div class="summary-title">Total Invoices</div>
-            <div class="summary-value">$24,950</div>
-            <div class="summary-change positive-change">↑ 12% from last month</div>
+            <div class="summary-title">Celkem faktur</div>
+            <div class="summary-value">24 950 Kč</div>
+            <div class="summary-change positive-change">↑ 12 % oproti minulému měsíci</div>
         </div>
         <div class="summary-card">
-            <div class="summary-title">Outstanding</div>
-            <div class="summary-value">$7,430</div>
-            <div class="summary-change negative-change">↑ 5% from last month</div>
+            <div class="summary-title">Nezaplacené</div>
+            <div class="summary-value">7 430 Kč</div>
+            <div class="summary-change negative-change">↑ 5 % oproti minulému měsíci</div>
         </div>
         <div class="summary-card">
-            <div class="summary-title">Overdue</div>
-            <div class="summary-value">$2,150</div>
-            <div class="summary-change negative-change">↑ 2% from last month</div>
+            <div class="summary-title">Po splatnosti</div>
+            <div class="summary-value">2 150 Kč</div>
+            <div class="summary-change negative-change">↑ 2 % oproti minulému měsíci</div>
         </div>
         <div class="summary-card">
-            <div class="summary-title">Paid This Month</div>
-            <div class="summary-value">$17,520</div>
-            <div class="summary-change positive-change">↑ 8% from last month</div>
+            <div class="summary-title">Zaplaceno tento měsíc</div>
+            <div class="summary-value">17 520 Kč</div>
+            <div class="summary-change positive-change">↑ 8 % oproti minulému měsíci</div>
         </div>
     </div>
 
     <div class="card">
         <div class="card-header">
-            <h2 class="card-title">Invoice List</h2>
+            <h2 class="card-title">Seznam faktur</h2>
         </div>
         <div class="card-body">
             <div class="tabs">
-                <div class="tab active">All Invoices</div>
-                <div class="tab">Drafts</div>
-                <div class="tab">Pending</div>
-                <div class="tab">Paid</div>
-                <div class="tab">Overdue</div>
+                <div class="tab active">Všechny faktury</div>
+                <div class="tab">Návrhy</div>
+                <div class="tab">Čekající</div>
+                <div class="tab">Zaplacené</div>
+                <div class="tab">Po splatnosti</div>
             </div>
 
             <div class="filters">
                 <div class="filter-group">
-                    <label class="filter-label">Date Range:</label>
+                    <label class="filter-label">Rozsah dat:</label>
                     <input type="date" class="filter-input" value="2025-03-01">
-                    <span>to</span>
+                    <span>do</span>
                     <input type="date" class="filter-input" value="2025-03-24">
                 </div>
                 <div class="filter-group">
-                    <label class="filter-label">Client:</label>
+                    <label class="filter-label">Klient:</label>
                     <select class="filter-select">
-                        <option>All Clients</option>
+                        <option>Všichni klienti</option>
                         <option>Acme Corp</option>
                         <option>TechStart Inc</option>
                         <option>Global Solutions</option>
@@ -82,19 +83,21 @@
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label class="filter-label">Recipient:</label>
+                    <label class="filter-label">Příjemce:</label>
                     <select class="filter-select">
-                        <option>All Recipients</option>
-                        <option>John Wilson</option>
-                        <option>Sarah Thompson</option>
+                        <option>Všichni příjemci</option>
+                        <option>Jan Novák</option>
+                        <option>Petra Svobodová</option>
                         <option>Michael Chen</option>
-                        <option>Accounts Payable</option>
+                        <option>Účetní oddělení</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <input type="text" class="filter-input" placeholder="Search invoices...">
+                    <input type="text" class="filter-input" placeholder="Hledat faktury...">
                 </div>
             </div>
+        </div>
+    </div>
 
             <div class="table-responsive">
                 <table>

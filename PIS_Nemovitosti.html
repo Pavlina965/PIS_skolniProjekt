@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemovitosti</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS odkazy atd. -->
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="#">Klienti</a>
+        <a href="#">Propojení</a>
+        <a href="PISFaktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Seznam nemovitostí</h2>
+        <button class="btn" onclick="alert('Formulář pro přidání nemovitosti')">+ Přidat nemovitost</button>
+    </div>
+    <div class="card-body">
+        <div style="margin-bottom: 20px;">
+            <input type="text" class="form-input" placeholder="Vyhledat podle adresy..." style="width: 100%; max-width: 300px;">
+        </div>
+        <div class="recent-activity">
+            <div class="activity-item">
+                <div class="activity-details">
+                    <div class="activity-title">Byt 2+kk, Praha 3</div>
+                    <div class="activity-description">Slunný byt s balkonem, 56 m²</div>
+                </div>
+                <div class="activity-time">Cena: 5 200 000 Kč</div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-details">
+                    <div class="activity-title">Rodinný dům, Beroun</div>
+                    <div class="activity-description">Novostavba, 4+1, zahrada 700 m²</div>
+                </div>
+                <div class="activity-time">Cena: 9 800 000 Kč</div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-details">
+                    <div class="activity-title">Komerční prostor, Kladno</div>
+                    <div class="activity-description">Pronájem kanceláře, 120 m²</div>
+                </div>
+                <div class="activity-time">Cena: 18 000 Kč/měsíc</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -450,25 +450,6 @@ tr:last-child td {
 a {
     text-decoration: none;
 }
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #3498db;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
 
 .navbar a:hover {
     color: #1abc9c;
@@ -684,6 +665,7 @@ tr:hover {
     color: #333;
 }
 .navbar {
+    width: 100%;
     position: sticky;
     top: 0;
     z-index: 1000;
