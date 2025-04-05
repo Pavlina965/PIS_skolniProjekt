@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Propojení nemovitostí - Engel & Völkers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: #18647a;
+            font-size: 24px;
+        }
+
+        .info-right {
+            text-align: right;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            margin-right: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background-color: #18647a;
+            color: white;
+        }
+
+        .property-card {
+            border-left: 4px solid #18647a;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .property-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .property-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #18647a;
+        }
+
+        .status {
+            color: #0a9649;
+            font-weight: bold;
+        }
+
+        .status.rent {
+            color: #e67e22;
+        }
+
+        .details-row {
+            display: flex;
+            margin-top: 5px;
+        }
+
+        .detail-label {
+            width: 150px;
+            color: #777;
+        }
+
+        .detail-value {
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+        }
+
+        .email-icon, .phone-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #f8c356;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .phone-icon {
+            background-color: #18647a;
+        }
+
+        .email, .phone {
+            margin-right: 20px;
+            color: #18647a;
+        }
+
+        .property-details {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .buyer-info {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e9f2f5;
+            border-radius: 5px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .agent-name {
+            color: #18647a;
+            font-weight: bold;
+        }
+
+        .search-filter {
+            margin: 20px 0;
+            display: flex;
+        }
+
+        .search-filter input {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        .search-filter select {
+            padding: 8px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="PIS_Klienti.html">Klienti</a>
+        <a href="PIS_Propojeni.html">Propojení</a>
+        <a href="PIS_Faktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PIS_SouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
+<header>
+    <h1>Engel & Völkers</h1>
+    <div class="info-right">
+        <p>Celkem nemovitostí: 8</p>
+    </div>
+</header>
+
+<div class="tabs">
+    <div class="tab active">Všechny nemovitosti</div>
+    <div class="tab">Prodej</div>
+    <div class="tab">Pronájem</div>
+    <div class="tab">Prodané</div>
+    <div class="tab">Pronajmuté</div>
+</div>
+
+<div class="search-filter">
+    <input type="text" placeholder="Vyhledat nemovitost...">
+    <select>
+        <option>Všechny typy nemovitostí</option>
+        <option>Byty</option>
+        <option>Domy</option>
+        <option>Komerční prostory</option>
+    </select>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Byt 3+kk, Praha 5 - Smíchov</div>
+        <div class="status">Prodej</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">10.3.2023</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Jan Novák</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Moderní byt 3+kk, 78m², 5. patro s výtahem, balkon, sklep, garážové stání. Cihlový dům z roku 2012.
+        <div class="price">8 900 000 Kč</div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Komerční prostor, Praha 1 - Nové Město</div>
+        <div class="status rent">Pronájem</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">15.11.2023</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Petra Svobodová</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Obchodní prostor v centru Prahy, 120m², výloha do ulice, sociální zařízení, skladový prostor.
+        <div class="price">45 000 Kč/měsíc</div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Rodinný dům, Beroun</div>
+        <div class="status">Prodej</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">5.2.2024</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Jan Novák</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Samostatný rodinný dům 5+1, 185m², pozemek 850m², garáž pro 2 auta, zahrada s bazénem.
+        <div class="price">12 500 000 Kč</div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Byt 2+kk, Praha 6 - Dejvice</div>
+        <div class="status">Prodáno</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">12.9.2022</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Prodáno dne:</div>
+        <div class="detail-value">23.6.2023</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Jan Novák</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Byt 2+kk, 58m², 3. patro s výtahem, balkon, sklep, novostavba.
+        <div class="price">6 800 000 Kč</div>
+    </div>
+    <div class="buyer-info">
+        <strong>Kupující:</strong> Pavel Černý
+        <div class="contact-info">
+            <span class="email"><span class="email-icon"></span>pavel.cerny@example.com</span>
+            <span class="phone"><span class="phone-icon"></span>+420 776 888 999</span>
+        </div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Kancelářské prostory, Praha 4 - Pankrác</div>
+        <div class="status rent">Pronajato</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">3.12.2023</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Pronajato dne:</div>
+        <div class="detail-value">15.2.2024</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Petra Svobodová</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Kancelářské prostory v moderní budově, 180m², 3 samostatné kanceláře, zasedací místnost, kuchyňka.
+        <div class="price">55 000 Kč/měsíc</div>
+    </div>
+    <div class="buyer-info">
+        <strong>Nájemce:</strong> ABC Tech, s.r.o.
+        <div>Kontaktní osoba: Martin Veselý</div>
+        <div class="contact-info">
+            <span class="email"><span class="email-icon"></span>martin.vesely@abctech.cz</span>
+            <span class="phone"><span class="phone-icon"></span>+420 602 123 456</span>
+        </div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Rodinný dům, Pardubice</div>
+        <div class="status">Prodáno</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">8.9.2021</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Prodáno dne:</div>
+        <div class="detail-value">15.11.2022</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Tomáš Kovář</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Rodinný dům 4+1, 140m², zahrada 800m², garáž.
+        <div class="price">8 200 000 Kč</div>
+    </div>
+    <div class="buyer-info">
+        <strong>Prodávající:</strong> Jana Procházková
+        <div class="contact-info">
+            <span class="email"><span class="email-icon"></span>jana.prochazkova@example.com</span>
+            <span class="phone"><span class="phone-icon"></span>+420 777 444 333</span>
+        </div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Byt 4+1, Praha 3 - Žižkov</div>
+        <div class="status rent">Pronájem</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">20.1.2024</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Jan Novák</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Prostorný byt 4+1, 110m², 4. patro s výtahem, balkon, sklep, po rekonstrukci.
+        <div class="price">30 000 Kč/měsíc</div>
+    </div>
+</div>
+
+<div class="property-card">
+    <div class="property-header">
+        <div class="property-title">Obchodní prostory, Praha 2 - Vinohrady</div>
+        <div class="status">Prodej</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Ve správě od:</div>
+        <div class="detail-value">5.3.2024</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Makléř:</div>
+        <div class="detail-value">Petra Svobodová</div>
+    </div>
+    <div class="property-details">
+        <strong>Popis nemovitosti:</strong> Obchodní prostory v rušné ulici, 95m², výloha do ulice, zázemí, sklad.
+        <div class="price">9 500 000 Kč</div>
+    </div>
+</div>
+</body>
+</html>

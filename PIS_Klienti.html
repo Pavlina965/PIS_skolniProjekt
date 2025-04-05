@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Databáze klientů - Engel & Völkers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: #18647a;
+            font-size: 24px;
+        }
+
+        .info-right {
+            text-align: right;
+        }
+
+        .client-card {
+            border-left: 4px solid #18647a;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .client-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #18647a;
+        }
+
+        .status {
+            color: #0a9649;
+            font-weight: bold;
+        }
+
+        .inactive {
+            color: #999;
+        }
+
+        .details-row {
+            display: flex;
+            margin-top: 5px;
+        }
+
+        .detail-label {
+            width: 150px;
+            color: #777;
+        }
+
+        .detail-value {
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+        }
+
+        .email-icon, .phone-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #f8c356;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .phone-icon {
+            background-color: #18647a;
+        }
+
+        .email, .phone {
+            margin-right: 20px;
+            color: #18647a;
+        }
+
+        .tabs {
+            display: flex;
+            margin-top: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            margin-right: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background-color: #18647a;
+            color: white;
+        }
+
+        .search-filter {
+            margin: 20px 0;
+            display: flex;
+        }
+
+        .search-filter input {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        .search-filter select {
+            padding: 8px;
+            width: 200px;
+        }
+
+        .client-preference {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="PIS_Klienti.html">Klienti</a>
+        <a href="PIS_Propojeni.html">Propojení</a>
+        <a href="PIS_Faktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PIS_SouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
+<header>
+    <h1>Engel & Völkers</h1>
+    <div class="info-right">
+        <p>Celkem klientů: 5</p>
+    </div>
+</header>
+
+<div class="tabs">
+    <div class="tab active">Všichni klienti</div>
+    <div class="tab">Aktivní klienti</div>
+    <div class="tab">Bývalí klienti</div>
+</div>
+
+<div class="search-filter">
+    <input type="text" placeholder="Vyhledat klienta...">
+    <select>
+        <option>Všechny typy nemovitostí</option>
+        <option>Rezidenční</option>
+        <option>Komerční</option>
+    </select>
+</div>
+
+<div class="client-card">
+    <div class="client-header">
+        <div class="client-name">Jan Novák</div>
+        <div class="status">Aktivní</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient od:</div>
+        <div class="detail-value">1.3.2020</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Typ klienta:</div>
+        <div class="detail-value">Kupující</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Přidělený makléř:</div>
+        <div class="detail-value">Petra Svobodová</div>
+    </div>
+    <div class="client-preference">
+        <strong>Preference:</strong> Hledá byt 3+kk nebo 3+1 v Praze 5, budget 7-9 mil. Kč, preferuje nižší patro s výtahem.
+    </div>
+    <div class="contact-info">
+        <span class="email"><span class="email-icon"></span>jan.novak@example.com</span>
+        <span class="phone"><span class="phone-icon"></span>+420 601 123 456</span>
+    </div>
+</div>
+
+<div class="client-card">
+    <div class="client-header">
+        <div class="client-name">Marie Dvořáková</div>
+        <div class="status">Aktivní</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient od:</div>
+        <div class="detail-value">15.5.2022</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Typ klienta:</div>
+        <div class="detail-value">Prodávající</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Přidělený makléř:</div>
+        <div class="detail-value">Jan Novák</div>
+    </div>
+    <div class="client-preference">
+        <strong>Nemovitost:</strong> Prodej rodinného domu 5+1 v Brně-Komín, 180m², zahrada 500m², požadovaná cena 12,5 mil. Kč.
+    </div>
+    <div class="contact-info">
+        <span class="email"><span class="email-icon"></span>marie.dvorakova@example.com</span>
+        <span class="phone"><span class="phone-icon"></span>+420 723 456 789</span>
+    </div>
+</div>
+
+<div class="client-card">
+    <div class="client-header">
+        <div class="client-name">Pavel Černý</div>
+        <div class="status inactive">Bývalý klient</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient od:</div>
+        <div class="detail-value">10.1.2021</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient do:</div>
+        <div class="detail-value">23.6.2023</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Typ klienta:</div>
+        <div class="detail-value">Kupující</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Přidělený makléř:</div>
+        <div class="detail-value">Jan Novák</div>
+    </div>
+    <div class="client-preference">
+        <strong>Koupená nemovitost:</strong> Byt 2+kk, Praha 6, 58m², 6,8 mil. Kč
+    </div>
+    <div class="contact-info">
+        <span class="email"><span class="email-icon"></span>pavel.cerny@example.com</span>
+        <span class="phone"><span class="phone-icon"></span>+420 776 888 999</span>
+    </div>
+</div>
+
+<div class="client-card">
+    <div class="client-header">
+        <div class="client-name">Tomáš Veselý</div>
+        <div class="status">Aktivní</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient od:</div>
+        <div class="detail-value">5.4.2023</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Typ klienta:</div>
+        <div class="detail-value">Investor</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Přidělený makléř:</div>
+        <div class="detail-value">Petra Svobodová</div>
+    </div>
+    <div class="client-preference">
+        <strong>Preference:</strong> Hledá komerční prostory pro podnikání v centru Prahy, 150-300m², budget do 20 mil. Kč nebo nájem do 60 000 Kč/měsíc.
+    </div>
+    <div class="contact-info">
+        <span class="email"><span class="email-icon"></span>tomas.vesely@example.com</span>
+        <span class="phone"><span class="phone-icon"></span>+420 602 333 444</span>
+    </div>
+</div>
+
+<div class="client-card">
+    <div class="client-header">
+        <div class="client-name">Jana Procházková</div>
+        <div class="status inactive">Bývalý klient</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient od:</div>
+        <div class="detail-value">8.9.2021</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Klient do:</div>
+        <div class="detail-value">15.11.2022</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Typ klienta:</div>
+        <div class="detail-value">Prodávající</div>
+    </div>
+    <div class="details-row">
+        <div class="detail-label">Přidělený makléř:</div>
+        <div class="detail-value">Tomáš Kovář</div>
+    </div>
+    <div class="client-preference">
+        <strong>Prodaná nemovitost:</strong> Rodinný dům 4+1, Pardubice, 140m², zahrada 800m², prodáno za 8,2 mil. Kč
+    </div>
+    <div class="contact-info">
+        <span class="email"><span class="email-icon"></span>jana.prochazkova@example.com</span>
+        <span class="phone"><span class="phone-icon"></span>+420 777 444 333</span>
+    </div>
+</div>
+</body>
+</html>

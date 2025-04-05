@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Report</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="PIS_Klienti.html">Klienti</a>
+        <a href="PIS_Propojeni.html">Propojení</a>
+        <a href="PIS_Faktury.html">Fakturace</a>
+        <a href="#">Výkazy</a>
+        <a href="PIS_SouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="header">
+        <div class="company-logo">Engel & Volkers</div>
+        <div class="report-date">Vytvořeno: 24.3.2025</div>
+    </div>
+
+    <div class="employee-info">
+        <div class="info-card">
+            <h3>Jan Novák</h3>
+            <p>Pozice: Senior vývojář</p>
+            <p>ID: EMP-1234</p>
+        </div>
+        <div class="info-card">
+            <h3>Kontaktní údaje</h3>
+            <p>Email: jan.novak@smallfirm.com</p>
+            <p>Telefon: +420 123 456 789</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Přehled (Březen 2025)</div>
+        <div class="stats-container">
+            <div class="stat-card blue">
+                <div class="stat-value">168</div>
+                <div class="stat-label">Odpracované hodiny</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Zbývající dny dovolené</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Aktivní projekty</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Vystavené faktury</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Odpracované hodiny (Březen 2025)</div>
+        <div class="monthly-chart">
+            <div class="chart-bar">
+                <div class="chart-value">40h</div>
+                <div class="chart-column" style="height: 80%;"></div>
+                <div class="chart-label">Týden 1</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-value">42h</div>
+                <div class="chart-column" style="height: 84%;"></div>
+                <div class="chart-label">Týden 2</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-value">38h</div>
+                <div class="chart-column" style="height: 76%;"></div>
+                <div class="chart-label">Týden 3</div>
+            </div>
+            <div class="chart-bar">
+                <div class="chart-value">48h</div>
+                <div class="chart-column" style="height: 96%;"></div>
+                <div class="chart-label">Týden 4</div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Projekt</th>
+                <th>Odpracované hodiny</th>
+                <th>% celkem</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Web redesign</td>
+                <td>56</td>
+                <td>33.3%</td>
+            </tr>
+            <tr>
+                <td>CRM implementace</td>
+                <td>48</td>
+                <td>28.6%</td>
+            </tr>
+            <tr>
+                <td>Mobilní aplikace</td>
+                <td>40</td>
+                <td>23.8%</td>
+            </tr>
+            <tr>
+                <td>Podpora klientů</td>
+                <td>24</td>
+                <td>14.3%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Dovolená</div>
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 55%;"></div>
+        </div>
+        <div class="progress-label">
+            <span>Využito: 4 dny</span>
+            <span>K dispozici: 16 dnů</span>
+            <span>Celkem: 20 dnů</span>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Období</th>
+                <th>Počet dnů</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>10.1.2025 - 12.1.2025</td>
+                <td>3</td>
+                <td><span class="status status-completed">Schváleno</span></td>
+            </tr>
+            <tr>
+                <td>15.2.2025</td>
+                <td>1</td>
+                <td><span class="status status-completed">Schváleno</span></td>
+            </tr>
+            <tr>
+                <td>17.4.2025 - 21.4.2025</td>
+                <td>3</td>
+                <td><span class="status status-pending">Čeká na schválení</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Aktivity podložené fakturou</div>
+        <table>
+            <thead>
+            <tr>
+                <th>Projekt</th>
+                <th>Klient</th>
+                <th>Fakturovaná částka</th>
+                <th>Stav</th>
+                <th>Faktura</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Web redesign</td>
+                <td>TechSolutions</td>
+                <td>45 000 Kč</td>
+                <td><span class="status status-invoiced">Fakturováno</span></td>
+                <td><a href="#" class="invoice-link">INV-2025-001</a></td>
+            </tr>
+            <tr>
+                <td>CRM implementace</td>
+                <td>Finance Group</td>
+                <td>38 000 Kč</td>
+                <td><span class="status status-invoiced">Fakturováno</span></td>
+                <td><a href="#" class="invoice-link">INV-2025-002</a></td>
+            </tr>
+            <tr>
+                <td>Mobilní aplikace</td>
+                <td>GreenStart</td>
+                <td>42 500 Kč</td>
+                <td><span class="status status-invoiced">Fakturováno</span></td>
+                <td><a href="#" class="invoice-link">INV-2025-003</a></td>
+            </tr>
+            <tr>
+                <td>Webový portál</td>
+                <td>City Services</td>
+                <td>35 000 Kč</td>
+                <td><span class="status status-pending">K fakturaci</span></td>
+                <td>-</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

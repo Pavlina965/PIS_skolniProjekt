@@ -1,58 +1,710 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+        <link rel="stylesheet" href="style.css">
+        <!-- CSS odkazy atd. -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nemovitosti</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- CSS odkazy atd. -->
-</head>
+    <title>Engel & Völkers - Databáze nemovitostí</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .header .info {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .employee-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .employee-item {
+            display: flex;
+            border-left: 4px solid #2c3e50;
+            padding-left: 10px;
+        }
+
+        .employee-content {
+            flex-grow: 1;
+            padding: 10px 0;
+        }
+
+        .employee-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .employee-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .employee-status {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .employee-details {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .detail-column {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 3px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .employee-contact {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-item i {
+            color: #7f8c8d;
+        }
+
+        .contact-email {
+            color: #3498db;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            border-bottom: 3px solid #2c3e50;
+            font-weight: bold;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter {
+            padding: 8px 12px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .filter.active {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .property-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .property-item {
+            border-left: 4px solid #2c3e50;
+            padding-left: 10px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .property-content {
+            padding: 10px 0;
+        }
+
+        .property-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .property-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .property-status {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status-sold {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .status-rented {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .property-details {
+            display: flex;
+        }
+
+        .detail-column {
+            flex: 1;
+        }
+
+        .property-contact {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .publish-button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .publish-button:hover {
+            background-color: #1a252f;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .primary-button {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .secondary-button {
+            background-color: #f5f5f5;
+            color: #2c3e50;
+        }
+    </style>
+
+
 <body>
 <header>
     <nav class="navbar">
         <a href="index.html">Dashboard</a>
         <a href="PIS_Nemovitosti.html">Nemovitosti</a>
-        <a href="#">Klienti</a>
-        <a href="#">Propojení</a>
-        <a href="PISFaktury.html">Fakturace</a>
+        <a href="PIS_Klienti.html">Klienti</a>
+        <a href="PIS_Propojeni.html">Propojení</a>
+        <a href="PIS_Faktury.html">Fakturace</a>
         <a href="#">Výkazy</a>
-        <a href="PISSouhrnZamestnancu.html">Zaměstnanci</a>
+        <a href="PIS_SouhrnZamestnancu.html">Zaměstnanci</a>
     </nav>
 </header>
 
-<div class="card">
-    <div class="card-header">
-        <h2 class="card-title">Seznam nemovitostí</h2>
-        <button class="btn" onclick="alert('Formulář pro přidání nemovitosti')">+ Přidat nemovitost</button>
+
+<div class="container">
+    <div class="header">
+        <h1>Engel & Völkers</h1>
+        <div class="info">Celkem nemovitostí: 42</div>
     </div>
-    <div class="card-body">
-        <div style="margin-bottom: 20px;">
-            <input type="text" class="form-input" placeholder="Vyhledat podle adresy..." style="width: 100%; max-width: 300px;">
+
+    <div class="tabs">
+        <div class="tab active">Všechny nemovitosti</div>
+        <div class="tab">Byty</div>
+        <div class="tab">Domy</div>
+        <div class="tab">Komerční</div>
+        <div class="tab">Pozemky</div>
+    </div>
+
+    <div class="filters">
+        <div class="filter active">Všechny</div>
+        <div class="filter">Dostupné</div>
+        <div class="filter">Prodané</div>
+        <div class="filter">Pronajmuté</div>
+        <div class="filter">Prodej</div>
+        <div class="filter">Pronájem</div>
+    </div>
+
+    <div class="property-list">
+        <div class="property-item">
+            <div class="property-content">
+                <div class="property-header">
+                    <div class="property-title">Luxusní byt 3+kk, Praha 1</div>
+                    <div class="property-status status-active">Aktivní</div>
+                </div>
+                <div class="property-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Pracovní doba</div>
+                        <div class="detail-value">1.3.2023 - dosud</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Rozměry</div>
+                        <div class="detail-value">95 m²</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Role</div>
+                        <div class="detail-value">Prodej</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Adresa</div>
+                        <div class="detail-value">Národní 15, Praha 1</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Tým</div>
+                        <div class="detail-value">Rezidenční Nemovitosti</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Cena</div>
+                        <div class="detail-value">12 500 000 Kč</div>
+                    </div>
+                </div>
+                <div class="property-contact">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span class="contact-email">jan.novak@engelvoelkers.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+420 123 456 789</span>
+                    </div>
+                </div>
+                <button class="publish-button">Publikovat na weby</button>
+            </div>
         </div>
-        <div class="recent-activity">
-            <div class="activity-item">
-                <div class="activity-details">
-                    <div class="activity-title">Byt 2+kk, Praha 3</div>
-                    <div class="activity-description">Slunný byt s balkonem, 56 m²</div>
+
+        <div class="property-item">
+            <div class="property-content">
+                <div class="property-header">
+                    <div class="property-title">Komerční prostor, Praha 5</div>
+                    <div class="property-status status-active">Aktivní</div>
                 </div>
-                <div class="activity-time">Cena: 5 200 000 Kč</div>
+                <div class="property-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Pracovní doba</div>
+                        <div class="detail-value">15.6.2023 - dosud</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Rozměry</div>
+                        <div class="detail-value">120 m²</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Role</div>
+                        <div class="detail-value">Pronájem</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Adresa</div>
+                        <div class="detail-value">Nádražní 25, Praha 5</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Tým</div>
+                        <div class="detail-value">Komerční Nemovitosti</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Cena</div>
+                        <div class="detail-value">45 000 Kč/měsíc</div>
+                    </div>
+                </div>
+                <div class="property-contact">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span class="contact-email">petra.svobodova@engelvoelkers.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+420 987 654 321</span>
+                    </div>
+                </div>
+                <button class="publish-button">Publikovat na weby</button>
             </div>
-            <div class="activity-item">
-                <div class="activity-details">
-                    <div class="activity-title">Rodinný dům, Beroun</div>
-                    <div class="activity-description">Novostavba, 4+1, zahrada 700 m²</div>
+        </div>
+
+        <div class="property-item">
+            <div class="property-content">
+                <div class="property-header">
+                    <div class="property-title">Vila 5+1, Praha 6</div>
+                    <div class="property-status status-sold">Prodáno</div>
                 </div>
-                <div class="activity-time">Cena: 9 800 000 Kč</div>
+                <div class="property-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Pracovní doba</div>
+                        <div class="detail-value">1.9.2023 - 5.3.2025</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Rozměry</div>
+                        <div class="detail-value">220 m²</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Role</div>
+                        <div class="detail-value">Prodej</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Adresa</div>
+                        <div class="detail-value">Na Vyhlídce 8, Praha 6</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Tým</div>
+                        <div class="detail-value">Rezidenční Nemovitosti</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Cena</div>
+                        <div class="detail-value">18 500 000 Kč</div>
+                    </div>
+                </div>
+                <div class="property-contact">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span class="contact-email">jan.novak@engelvoelkers.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+420 123 456 789</span>
+                    </div>
+                </div>
             </div>
-            <div class="activity-item">
-                <div class="activity-details">
-                    <div class="activity-title">Komerční prostor, Kladno</div>
-                    <div class="activity-description">Pronájem kanceláře, 120 m²</div>
+        </div>
+
+        <div class="property-item">
+            <div class="property-content">
+                <div class="property-header">
+                    <div class="property-title">Byt 2+kk, Praha 10</div>
+                    <div class="property-status status-rented">Pronajato</div>
                 </div>
-                <div class="activity-time">Cena: 18 000 Kč/měsíc</div>
+                <div class="property-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Pracovní doba</div>
+                        <div class="detail-value">10.11.2023 - 12.2.2025</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Rozměry</div>
+                        <div class="detail-value">55 m²</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Role</div>
+                        <div class="detail-value">Pronájem</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Adresa</div>
+                        <div class="detail-value">Vršovická 120, Praha 10</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Tým</div>
+                        <div class="detail-value">Rezidenční Nemovitosti</div>
+
+                        <div class="detail-label" style="margin-top: 10px;">Cena</div>
+                        <div class="detail-value">16 000 Kč/měsíc</div>
+                    </div>
+                </div>
+                <div class="property-contact">
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <span class="contact-email">petra.svobodova@engelvoelkers.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <span>+420 987 654 321</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal" id="propertyModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Detail nemovitosti</div>
+            <button class="close-button" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Název nemovitosti</label>
+                <input type="text" class="form-input" value="Luxusní byt 3+kk, Praha 1">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Typ transakce</label>
+                <select class="form-input">
+                    <option>Prodej</option>
+                    <option>Pronájem</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Typ nemovitosti</label>
+                <select class="form-input">
+                    <option>Byt</option>
+                    <option>Dům</option>
+                    <option>Komerční prostor</option>
+                    <option>Pozemek</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Rozměry (m²)</label>
+                <input type="number" class="form-input" value="95">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Adresa</label>
+                <input type="text" class="form-input" value="Národní 15, Praha 1">
+            </div>
+            <div class="form-group">
+                <label class="form-label">PSČ</label>
+                <input type="text" class="form-input" value="110 00">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Město</label>
+                <input type="text" class="form-input" value="Praha">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Cena</label>
+                <input type="text" class="form-input" value="12 500 000">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Majitel nemovitosti</label>
+                <input type="text" class="form-input" value="Jan Novák">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Kontakt na majitele</label>
+                <input type="text" class="form-input" value="+420 555 123 456">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Stav</label>
+                <select class="form-input">
+                    <option>Aktivní</option>
+                    <option>Prodáno</option>
+                    <option>Pronajmuto</option>
+                    <option>Neaktivní</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Makléř</label>
+                <select class="form-input">
+                    <option>Jan Novák</option>
+                    <option>Petra Svobodová</option>
+                    <option>Tomáš Kovář</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Datum přidání</label>
+                <input type="date" class="form-input" value="2025-03-15">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Počet místností</label>
+                <input type="number" class="form-input" value="3">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Patro</label>
+                <input type="number" class="form-input" value="4">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Výtah</label>
+                <select class="form-input">
+                    <option>Ano</option>
+                    <option>Ne</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Popis</label>
+            <textarea class="form-input" rows="5">Luxusní byt 3+kk v centru Prahy s výhledem na Vltavu. Byt prošel kompletní rekonstrukcí v roce 2023. Kuchyňská linka je vybavena spotřebiči značky Miele. V bytě jsou podlahové vytápění, dubové parketové podlahy a vestavěné skříně.</textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-label">API publikace</label>
+            <select class="form-input" multiple>
+                <option>Sreality.cz</option>
+                <option>Bezrealitky.cz</option>
+                <option>Reality.idnes.cz</option>
+                <option>Realitymix.cz</option>
+                <option>Ceskereality.cz</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button class="button secondary-button" onclick="closeModal()">Zrušit</button>
+            <button class="button primary-button">Uložit</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById('propertyModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('propertyModal').style.display = 'none';
+    }
+
+    // Add event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        const propertyItems = document.querySelectorAll('.property-item');
+        propertyItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('publish-button')) {
+                    openModal();
+                }
+            });
+        });
+
+        const publishButtons = document.querySelectorAll('.publish-button');
+        publishButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                alert('Nemovitost bude publikována na vybrané weby přes API');
+            });
+        });
+
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        const filters = document.querySelectorAll('.filter');
+        filters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                filters.forEach(f => f.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+</script>
 </body>
 </html>
