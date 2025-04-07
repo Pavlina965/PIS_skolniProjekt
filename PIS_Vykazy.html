@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výkaz práce realitního makléře</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .header .info {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .section-header {
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .employee-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .employee-item {
+            display: flex;
+            border-left: 4px solid #2c3e50;
+            padding-left: 10px;
+        }
+
+        .employee-content {
+            flex-grow: 1;
+            padding: 10px 0;
+        }
+
+        .employee-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .employee-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .employee-status {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Schváleno - výchozí status */
+        .status-active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .employee-details {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .detail-column {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 3px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="index.html">Dashboard</a>
+        <a href="PIS_Nemovitosti.html">Nemovitosti</a>
+        <a href="PIS_Klienti.html">Klienti</a>
+        <a href="PIS_Propojeni.html">Propojení</a>
+        <a href="PIS_Faktury.html">Fakturace</a>
+        <a href="PIS_Vykazy.html">Výkazy</a>
+        <a href="PIS_SouhrnZamestnancu.html">Zaměstnanci</a>
+    </nav>
+</header>
+<div class="container">
+    <!-- Přehled faktur -->
+    <div class="header">
+        <h1>Výkaz faktur</h1>
+        <div class="info">Realitní kancelář | Období: 1. - 31. 03. 2025</div>
+    </div>
+    <div class="employee-list">
+        <!-- Faktura 1001 -->
+        <div class="employee-item">
+            <div class="employee-content">
+                <div class="employee-header">
+                    <div class="employee-name">Faktura č. 1001</div>
+                    <div class="employee-status status-active">Schváleno</div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Zaměstnanec</div>
+                        <div class="detail-value">Jan Novák</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Částka</div>
+                        <div class="detail-value">15 000 Kč</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Poznámky</div>
+                        <div class="detail-value">Platba bankovním převodem</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Faktura 1002 -->
+        <div class="employee-item">
+            <div class="employee-content">
+                <div class="employee-header">
+                    <div class="employee-name">Faktura č. 1002</div>
+                    <div class="employee-status" style="background-color: #fff3cd; color: #856404;">Čeká</div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Zaměstnanec</div>
+                        <div class="detail-value">Jan Novák</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Částka</div>
+                        <div class="detail-value">20 000 Kč</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Poznámky</div>
+                        <div class="detail-value">Odesláno ke kontrole</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Faktura 1003 -->
+        <div class="employee-item">
+            <div class="employee-content">
+                <div class="employee-header">
+                    <div class="employee-name">Faktura č. 1003</div>
+                    <div class="employee-status status-active">Schváleno</div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Zaměstnanec</div>
+                        <div class="detail-value">Jan Novák</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Částka</div>
+                        <div class="detail-value">10 000 Kč</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Poznámky</div>
+                        <div class="detail-value">Úhrada do 7 dní</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Faktura 1004 -->
+        <div class="employee-item">
+            <div class="employee-content">
+                <div class="employee-header">
+                    <div class="employee-name">Faktura č. 1004</div>
+                    <div class="employee-status" style="background-color: #ffebee; color: #c62828;">Zamítnuto</div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Zaměstnanec</div>
+                        <div class="detail-value">Jan Novák</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Částka</div>
+                        <div class="detail-value">5 000 Kč</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Poznámky</div>
+                        <div class="detail-value">Nesplňuje fakturační kritéria</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Přehled uzavřených obchodů -->
+    <div class="section-header">
+        <h2>Uzavřené obchody</h2>
+    </div>
+    <div class="employee-list">
+        <!-- Obchod 2001 -->
+        <div class="employee-item">
+            <div class="employee-content">
+                <div class="employee-header">
+                    <div class="employee-name">Obchod č. 2001</div>
+                    <div class="employee-status status-active">Uzavřen</div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Nemovitost</div>
+                        <div class="detail-value">Prodej bytu v Praze 10</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Makléř</div>
+                        <div class="detail-value">Jan Novák</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Prodejní cena</div>
+                        <div class="detail-value">3 500 000 Kč</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Provize</div>
+                        <div class="detail-value">3%</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Poznámky</div>
+                        <div class="detail-value">Úspěšný prodej, předání klíčů 25.03.2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Obchod 2002 -->
+        <div class="employee-item">
+            <div class="employee-content">
+                <div class="employee-header">
+                    <div class="employee-name">Obchod č. 2002</div>
+                    <div class="employee-status status-active">Uzavřen</div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Nemovitost</div>
+                        <div class="detail-value">Pronájem kancelářských prostor</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Makléř</div>
+                        <div class="detail-value">Jan Novák</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Nájemné</div>
+                        <div class="detail-value">80 000 Kč/měsíc</div>
+                    </div>
+                    <div class="detail-column">
+                        <div class="detail-label">Provize</div>
+                        <div class="detail-value">2,5%</div>
+                    </div>
+                </div>
+                <div class="employee-details">
+                    <div class="detail-column">
+                        <div class="detail-label">Poznámky</div>
+                        <div class="detail-value">Dlouhodobý pronájem, smlouva na 12 měsíců</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
